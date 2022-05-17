@@ -35,4 +35,4 @@ jobs:
         tags: jcaporossi/test/builder:latest
     - name: Inspect
       run: |
-        docker buildx imagetools inspect localhost:5001/test/builder:latest
+        docker buildx imagetools inspect jcaporossi/test/builder:latest
