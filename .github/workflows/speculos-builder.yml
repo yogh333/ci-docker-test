@@ -32,7 +32,7 @@ jobs:
         file: build.Dockerfile
         push: true
         platforms: linux/amd64,linux/arm64
-        tags: jcaporossi/test/builder:latest
+        tags: test/builder:latest
     - name: Inspect
       run: |
-        docker buildx imagetools inspect jcaporossi/test/builder:latest
+        docker buildx imagetools inspect test/builder:latest
