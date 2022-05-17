@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Clone
       uses: actions/checkout@v2
-
+      
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
 
@@ -29,7 +29,8 @@ jobs:
     - name: Build and push test-builder to local registry
       uses: docker/build-push-action@v3
       with:
-        file: build.Dockerfile
+        context: .
+        file: ./build.Dockerfile
         push: true
         platforms: linux/amd64,linux/arm64
         tags: jcaporossi/test-builder:latest
