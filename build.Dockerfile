@@ -26,9 +26,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 # Create SHA256SUMS, download dependencies and verify their integrity
 RUN \
-  echo 9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f openssl-1.1.1o.tar.gz >> SHA256SUMS && \
+  echo ee0078adcef1de5f003c62c80cc96527721609c6f3bb42b7795df31f8b558c0b openssl-3.0.3.tar.gz >> SHA256SUMS && \
   echo f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6 cmocka-1.1.5.tar.xz >> SHA256SUMS && \
-  wget --quiet https://www.openssl.org/source/openssl-1.1.1o.tar.gz && \
+  wget --quiet https://www.openssl.org/source/openssl-3.0.3.tar.gz && \
   wget --quiet https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz && \
   sha256sum --check SHA256SUMS && \
   rm SHA256SUMS
@@ -36,13 +36,13 @@ RUN \
 
 # Build dependencies and install them in /install
 RUN mkdir install && \
-  tar xf openssl-1.1.1o.tar.gz && \
-  cd openssl-1.1.1o && \
+  tar xf openssl-3.0.3.tar.gz && \
+  cd openssl-3.0.3 && \
   ./Configure --cross-compile-prefix=arm-linux-gnueabihf- no-asm no-threads no-shared no-sock linux-armv4 --prefix=/install && \
   make -j CFLAGS=-mthumb && \
   make install_sw && \
   cd .. && \
-  rm -r openssl-1.1.1o/ openssl-1.1.1o.tar.gz
+  rm -r openssl-3.0.3/ openssl-3.0.3.tar.gz
 
 RUN mkdir cmocka && \
   tar xf cmocka-1.1.5.tar.xz && \
