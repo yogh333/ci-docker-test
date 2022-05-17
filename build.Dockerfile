@@ -34,21 +34,21 @@ RUN \
   rm SHA256SUMS
 
 # Build dependencies and install them in /install
-RUN mkdir install && \
-  tar xf openssl-1.1.1k.tar.gz && \
-  cd openssl-1.1.1k && \
-  ./Configure --cross-compile-prefix=arm-linux-gnueabihf- no-asm no-threads no-shared no-sock linux-armv4 --prefix=/install && \
-  make -j CFLAGS=-mthumb && \
-  make install_sw && \
-  cd .. && \
-  rm -r openssl-1.1.1k/ openssl-1.1.1k.tar.gz
+#RUN mkdir install && \
+#  tar xf openssl-1.1.1k.tar.gz && \
+#  cd openssl-1.1.1k && \
+#  ./Configure --cross-compile-prefix=arm-linux-gnueabihf- no-asm no-threads no-shared no-sock linux-armv4 --prefix=/install && \
+#  make -j CFLAGS=-mthumb && \
+#  make install_sw && \
+#  cd .. && \
+#  rm -r openssl-1.1.1k/ openssl-1.1.1k.tar.gz
 
-RUN mkdir cmocka && \
-  tar xf cmocka-1.1.5.tar.xz && \
-  cd cmocka && \
-  cmake ../cmocka-1.1.5 -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc -DCMAKE_C_FLAGS=-mthumb -DWITH_STATIC_LIB=true -DCMAKE_INSTALL_PREFIX=/install && \
-  make install && \
-  cd .. && \
-  rm -r cmocka/ cmocka-1.1.5/ cmocka-1.1.5.tar.xz
+#RUN mkdir cmocka && \
+#  tar xf cmocka-1.1.5.tar.xz && \
+#  cd cmocka && \
+#  cmake ../cmocka-1.1.5 -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc -DCMAKE_C_FLAGS=-mthumb -DWITH_STATIC_LIB=true -DCMAKE_INSTALL_PREFIX=/install && \
+#  make install && \
+#  cd .. && \
+#  rm -r cmocka/ cmocka-1.1.5/ cmocka-1.1.5.tar.xz
 
 CMD ["/bin/bash"]
