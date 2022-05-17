@@ -22,13 +22,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   rm -rf /var/lib/apt/lists/
 
 # There are issues with PYTHONHOME if using distro packages, use pip instead.
-RUN pip3 install construct flake8 flask flask_restful jsonschema mnemonic pycrypto pyelftools pbkdf2 pytest Pillow requests
+#RUN pip3 install construct flake8 flask flask_restful jsonschema mnemonic pycrypto pyelftools pbkdf2 pytest Pillow requests
 
 # Create SHA256SUMS, download dependencies and verify their integrity
 RUN \
   echo 9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f openssl-1.1.1o.tar.gz >> SHA256SUMS && \
   echo f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6 cmocka-1.1.5.tar.xz >> SHA256SUMS && \
-  wget --quiet https://www.openssl.org/source/openssl-1.1.1k.tar.gz && \
+  wget --quiet https://www.openssl.org/source/openssl-1.1.1o.tar.gz && \
   wget --quiet https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz && \
   sha256sum --check SHA256SUMS && \
   rm SHA256SUMS
