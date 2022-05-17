@@ -32,7 +32,7 @@ jobs:
         context: .
         file: ./build.Dockerfile
         push: true
-        platforms: linux/amd64
+        platforms: linux/arm64
         tags: jcaporossi/test-builder:latest
     - name: Inspect
       run: |
